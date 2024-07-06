@@ -1,0 +1,27 @@
+﻿@model StoresAndItems
+
+@{
+    ViewData["Title"] = "AddItems";
+    SelectList allstores = new SelectList(Model.Stores, "Id", "Name");
+    SelectList allitems = new SelectList(Model.Items, "Id", "Name");
+}
+
+<h1>Add Items</h1>
+<p>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
+</p>
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label for="storeId" class="control-label">Select Store</label>
+        <select asp-items="allstores" name="storeId" class="form-control" id="storeId"></select>
+    </div>
+    <hr />
+    <div class="form-group">
+        @foreach (var item in Model.Items)
+        {
+            <label for="itemQuantity">@item.Name</label>
+            <input type="number" name="itemQuantity[@item.Id]" placeholder="Quantity" class="form-control" id="itemQuantity" />
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Add Items</button>
+</form>

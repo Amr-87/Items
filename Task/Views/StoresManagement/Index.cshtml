@@ -1,0 +1,49 @@
+﻿@model StoresAndItems
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-primary text-center">Stores And Items</h1>
+<p>
+    <a asp-action="AddItems" class="btn btn-success">Add Items</a>
+</p>
+<hr />
+<div class="container">
+    <div class="row">
+        @foreach (var store in Model.Stores)
+        {
+            <div class="col-sm-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title">Store: @store.Name</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Items :: Quantity</h6>
+                        <ul class="list-group list-group-flush">
+                            @if (store.StoreItems.Any())
+                            {
+                                @foreach (var storeitem in store.StoreItems)
+                                {
+                                    if (storeitem.Quantity > 0)
+                                    {
+                                        <li class="list-group-item">
+                                           @storeitem.Item.Name :: @storeitem.Quantity
+                                        </li>
+                                    }
+                                 
+                                }
+                            }
+                            else
+                            {
+                                <li class="list-group-item text-muted">No items</li>
+                            }
+                        </ul>
+                    </div>
+                    <a asp-action="AddItemsToStore" asp-route-storeId="@store.Id" class="btn btn-secondary">Add Items to Store</a>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

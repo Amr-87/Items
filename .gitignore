@@ -1,0 +1,122 @@
+##############################################c++
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+######################################################c#
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user-specific files and workspace settings
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore Rider project files
+.idea/
+*.sln.iml
+
+# Ignore local history
+.idea/localHistory
+
+# Ignore Rider logs
+.idea/idea.log
+
+# Ignore Rider modules.xml
+.idea/modules.xml
+
+# Ignore Rider workspace.xml
+.idea/workspace.xml
+
+# Ignore Rider .idea/modules.xml
+.idea/.idea/
+
+# Ignore Rider .idea/*.iml
+.idea/*.iml
+
+# Ignore ReSharper settings
+*.DotSettings.user
+
+# Ignore Visual Studio database files
+*.mdf
+*.ldf
+
+# Ignore NuGet packages
+*.nupkg
+*.snupkg
+packages/
+NuGet.config
+NuGet.exe
+# Uncomment if using the old format
+# packages.config
+
+# Ignore JetBrains Rider project settings
+.idea/
+
+# Ignore StyleCop
+StyleCop.Cache
+
+# Ignore project lock files
+project.lock.json
+
+# Ignore MSBuild project files
+*.vcxproj.*
+*.filters
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore local history
+.localhistory/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore coverage reports
+coverage/
+
+# Ignore application insights config
+ApplicationInsights.config
+
+# Ignore IIS config
+.vs/
+
+# Ignore user secrets
+secrets.json
+
+# Ignore Publish profile
+*.pubxml
+*.publishsettings

@@ -1,0 +1,79 @@
+﻿@model StoreAndItems
+
+@{
+    ViewData["Title"] = "Add Items to Store";
+    Store store = Model.Store;
+    var itemsInStore = store.StoreItems.Select(a => a.Item).ToList();
+    var itemsNotInStore = Model.ItemsNotInStore;
+}
+
+<h1>Add Items</h1>
+<p>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
+</p>
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <h4>@store.Name</h4>
+        <h5>Items in Store</h5>
+        @if (itemsInStore.Any())
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in itemsInStore)
+                    {
+                        var storeItem = store.StoreItems.FirstOrDefault(si => si.ItemId == item.Id);
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>
+                                <input type="number" name="itemQuantity[@item.Id]" value="@storeItem?.Quantity" placeholder="Quantity" class="form-control" id="itemQuantity_@item.Id" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <input type="hidden" name="itemQuantity[-1]" value="0" /> <!-- Dummy value to prevent null exception -->
+            <p>No existing items in this store.</p>
+        }
+    </div>
+    <hr />
+    <div class="form-group">
+        <h5>Items Not in Store</h5>
+        @if (itemsNotInStore.Any())
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in itemsNotInStore)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>
+                                <input type="number" name="newItemQuantity[@item.Id]" placeholder="Quantity" class="form-control" id="newItemQuantity_@item.Id" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <input type="hidden" name="newItemQuantity[-1]" value="0" /> <!-- Dummy value to prevent null exception -->
+            <p>All items are already in this store.</p>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Add Items To Store</button>
+</form>
